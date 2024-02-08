@@ -54,7 +54,7 @@
         </div>
         <!--add cv-->
         <div class="div">
-            <a class="choice" href="">
+            <a class="choice" href="cv.php">
                 <h2>+</h2>
                 <h2>Créer CV</h2>
             </a>

@@ -1,0 +1,31 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #1e1e1e;
+}
+
+section{
+    margin: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    background-color: #333333;
+    border-radius: 20px;
+}
+
+input{
+    margin-bottom: 5vh;
+}
+
+.div {
+    width: 40vh;
+    margin: 30px;
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #2ecc71;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: white;
+}
