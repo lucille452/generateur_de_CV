@@ -9,9 +9,36 @@
 <body>
 <header>
     <!--possibilité de update user-->
-    <a href="">
+    <a href="#profile">
         Profil
     </a>
+    <div id="profile" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <header class="clo">
+                    <h10>Profil</h10>
+                    <a href="#" class="closebtn">×</a>
+                </header>
+                <div class="container">
+                    <?php
+                    $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
+                    session_start();
+                    $user = $bdd->prepare('SELECT * FROM users WHERE Username=?');
+                    $user->execute([$_SESSION['username']]);
+
+                    while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<p>" . $row['Last_name']. "</p>";
+                        echo "<p>" . $row['First_name']. "</p>";
+                        echo "<p>" . $row['Email']. "</p>";
+                        echo "<p>" . $row['Phone_tel']. "</p>";
+                        echo "<p>" . $row['Username']. "</p></div>";
+                    }
+
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--possibilité de deconnexion-->
     <a href="home.php">
         <img src="../image/option-de-deconnexion.png">
@@ -20,13 +47,13 @@
 
 <main>
     <section>
-        <div>
+        <div class="div">
             <a class="choice" href="info.php">
                 <h2>Mes Informations</h2>
             </a>
         </div>
         <!--add cv-->
-        <div>
+        <div class="div">
             <a class="choice" href="">
                 <h2>+</h2>
                 <h2>Créer CV</h2>

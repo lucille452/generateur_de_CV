@@ -22,7 +22,7 @@ section {
     border-bottom: 2px solid #9c9c9c;
 }
 
-div {
+.div {
     width: 20vh;
     margin: 30px;
     background-color: #2a2a2a;
@@ -58,4 +58,82 @@ h1 {
 
 .choice {
     padding: 0;
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+/* Foncer l'arrière-plan de la fenêtre modale */
+.modal {
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+/* Afficher la fenêtre modale lorsqu'elle est ciblée par un lien supprimer */
+.modal:target {
+    display: table;
+    position: absolute;
+}
+
+/* la fenêtre modale  */
+.modal-dialog {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Le contenu de la modale */
+.modal-dialog .modal-content {
+    background-color: #2a2a2a;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    margin-left: 150vh;
+    margin-bottom: 50vh;
+    border: 1px #777 solid;
+    border-radius: 10px;
+    text-align: justify;
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    animation-name: slideDownFadeIN;
+    animation-duration: 0.5s;
+}
+
+/* Bouton servant à fermer la fenêtre modale */
+.closebtn {
+    text-decoration: none;
+    float: right;
+    font-weight: bold;
+    color: #fff;
+}
+
+.closebtn:hover,
+.closebtn:focus {
+    color: #2a2a2a;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.container {
+    padding: 2px 16px;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.clo {
+    background-color: #27ae60;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
