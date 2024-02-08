@@ -16,7 +16,8 @@ include "../../server/information.php";
     <?php
     $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
-    $experiences = $bdd->query('SELECT * FROM academics');
+    $experiences = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
+    $experiences->execute([GetUserID()]);
 
     while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
         echo "<div style='display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Diploma']. "</p>";
@@ -52,7 +53,8 @@ include "../../server/information.php";
     <?php
     $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
-    $experiences = $bdd->query('SELECT * FROM experiences');
+    $experiences = $bdd->prepare('SELECT * FROM experiences WHERE User_id=?');
+    $experiences->execute([GetUserID()]);
 
     while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
         echo "<div style='display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Company']. "</p>";
@@ -85,6 +87,6 @@ include "../../server/information.php";
         <button type="submit" name="pro">Ajouter</button>
     </form>
 </div>
-<a href="home.php">Retour page d'Accueil</a>
+<a href="home1.php">Retour page d'Accueil</a>
 </body>
 </html>

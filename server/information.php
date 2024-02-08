@@ -11,7 +11,7 @@ if (isset($_POST['formation'])) {
     $school = $_POST['school'];
 
     $academics = $bdd->prepare("INSERT INTO academics (Diploma, Date_start, Date_end, School, User_id) VALUES (?, ?, ?, ?, ?)");
-    $academics->execute([$diploma, $dateStart, $dateEnd, $school]);
+    $academics->execute([$diploma, $dateStart, $dateEnd, $school, GetUserID()]);
 }
 
 if (isset($_POST['pro'])) {

@@ -1,42 +1,34 @@
+<?php
+include '../../server/connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../Css/home.css">
+    <link rel="stylesheet" href="../Css/sign_up.css">
     <meta charset="UTF-8">
-    <title>Accueil</title>
+    <title>Connexion</title>
 </head>
-
 <body>
-<header>
-    <!--possibilité de update user-->
-    <a href="">
-        Profil
-    </a>
-    <!--possibilité de deconnexion-->
-    <a href="sign_in.php">
-        <img src="../image/option-de-deconnexion.png">
-    </a>
-</header>
+<div class="container">
+    <h1>Connexion</h1>
 
-<main>
-    <section>
-        <div>
-            <a class="choice" href="info.php">
-                <h2>Mes Informations</h2>
-            </a>
-        </div>
-        <!--add cv-->
-        <div>
-            <a class="choice" href="">
-                <h2>+</h2>
-                <h2>Créer CV</h2>
-            </a>
-        </div>
-    </section>
-    <!--tous les cv-->
-    <h1>Mes CV</h1>
-    <!--list/boucle pour afficher tous les cv-->
-</main>
+    <form action="" method="post">
+
+        <label>Nom d'utilisateur :</label>
+        <input name="username" type="text" />
+
+        <label>Mot de passe :</label>
+        <input name="password" type="password" /></br>
+
+        <a>Mot de passe oublié</a></p>
+
+        <button type="submit" name="submit">Connexion</button>
+    </form></br>
+    <a href="sign_up.php">
+        <button>S'inscrire</button>
+    </a>
+</div>
 
 </body>
 </html>
