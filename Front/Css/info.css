@@ -40,6 +40,11 @@ h2{
     color: white;
 }
 
+h10 {
+    color: red;
+    font-size: 10px;
+}
+
 a{
     color: #27ae60;
     text-decoration: none;

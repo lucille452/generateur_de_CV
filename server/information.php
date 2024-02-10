@@ -2,6 +2,15 @@
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
+function GetUserID()
+{
+    global $bdd;
+    $userIdQuery = $bdd->prepare("SELECT User_id FROM users WHERE username=?");
+    $userIdQuery->execute([$_SESSION['username']]);
+    $userId = $userIdQuery->fetchColumn();
+    return $userId;
+}
+
 session_start();
 
 if (isset($_POST['formation'])) {
@@ -10,8 +19,10 @@ if (isset($_POST['formation'])) {
     $dateEnd = $_POST['dateEnd'];
     $school = $_POST['school'];
 
-    $academics = $bdd->prepare("INSERT INTO academics (Diploma, Date_start, Date_end, School, User_id) VALUES (?, ?, ?, ?, ?)");
-    $academics->execute([$diploma, $dateStart, $dateEnd, $school, GetUserID()]);
+    if (!empty($diploma) && !empty($dateStart) && !empty($dateEnd) && !empty($school) && $dateStart < $dateEnd) {
+        $academics = $bdd->prepare("INSERT INTO academics (Diploma, Date_start, Date_end, School, User_id) VALUES (?, ?, ?, ?, ?)");
+        $academics->execute([$diploma, $dateStart, $dateEnd, $school, GetUserID()]);
+    }
 }
 
 if (isset($_POST['pro'])) {
@@ -21,17 +32,8 @@ if (isset($_POST['pro'])) {
     $job = $_POST['job'];
     $descriptions = $_POST['descriptions'];
 
-    $experiences = $bdd->prepare("INSERT INTO experiences (Company, Date_start, Date_end, Job, Descriptions, User_id) VALUES (?, ?, ?, ?, ?, ?)");
-    $experiences->execute([$company, $dateStart, $dateEnd, $job, $descriptions, GetUserID()]);
-}
-
-function GetUserID()
-{
-    $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
-
-    $userIdQuery = $bdd->prepare("SELECT User_id FROM users WHERE username=?");
-    $userIdQuery->execute([$_SESSION['username']]);
-    $userId = $userIdQuery->fetchColumn();
-
-    return $userId;
+    if (!empty($company) && !empty($dateStart) && !empty($dateEnd) && !empty($job) && !empty($descriptions) && $dateStart < $dateEnd) {
+        $experiences = $bdd->prepare("INSERT INTO experiences (Company, Date_start, Date_end, Job, Descriptions, User_id) VALUES (?, ?, ?, ?, ?, ?)");
+        $experiences->execute([$company, $dateStart, $dateEnd, $job, $descriptions, GetUserID()]);
+    }
 }

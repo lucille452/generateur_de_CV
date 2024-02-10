@@ -18,17 +18,27 @@ include '../../server/connection.php';
     <form action="" method="post">
 
         <label>Nom d'utilisateur :</label>
-        <input name="username" type="text" />
+        <input name="username" type="text" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>"/></br>
+        <?php
+        if (isset($_POST['submit']) && empty($username)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?>
 
         <label>Mot de passe :</label>
-        <input name="password" type="password" /></br>
+        <input name="password" type="password" value="<?php echo isset($_POST['password']) ? $_POST['password'] : ''; ?>"/></br>
+        <?php
+        if (isset($_POST['submit']) && empty($password)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?><p></p>
 
-        <a>Mot de passe oublié</a></p>
+<!--        <a>Mot de passe oublié</a></p>-->
 
         <button type="submit" name="submit">Connexion</button>
     </form></br>
     <a href="sign_up.php">
-        <button>S'inscrire</button>
+        <button class="register">S'inscrire</button>
     </a>
 </div>
 </div>

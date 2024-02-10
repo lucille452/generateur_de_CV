@@ -31,18 +31,43 @@ include "../../server/information.php";
     <form action="" method="post">
 
         <label>Diplôme :</label>
-        <input name="qualification" type="text" />
+        <input name="qualification" type="text" value="<?php echo isset($_POST['qualification']) ? $_POST['qualification'] : ''; ?>"/></br>
+        <?php
+        if (isset($_POST['formation']) && empty($diploma)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?>
 
         <label>Date :</label>
         <div class="date">
             <p>Du</p>
-            <input name="dateStart" type="date">
+            <input name="dateStart" type="date" value="<?php echo isset($_POST['dateStart']) ? $_POST['dateStart'] : ''; ?>"/>
+            <?php
+            if (isset($_POST['formation']) && empty($dateStart)) {
+                echo "<h10>Champ vide</h10>";
+            }
+            ?>
             <p>au</p>
-            <input name="dateEnd" type="date" />
-        </div>
+            <input name="dateEnd" type="date" value="<?php echo isset($_POST['dateEnd']) ? $_POST['dateEnd'] : ''; ?>"/>
+            <?php
+            if (isset($_POST['formation']) && empty($dateEnd)) {
+                echo "<h10>Champ vide</h10>";
+            }
+            ?>
+        </div></br>
+        <?php
+        if (isset($_POST['formation']) && ($_POST['dateStart'] > $_POST['dateEnd']) ) {
+            echo "<h10>Ordre des dates invalide</h10>";
+        }
+        ?>
 
         <label>Etablissement :</label>
-        <input name="school" type="text" /></p>
+        <input name="school" type="text" value="<?php echo isset($_POST['school']) ? $_POST['school'] : ''; ?>"/></br>
+        <?php
+        if (isset($_POST['formation']) && empty($school)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?><p></p>
 
         <button type="submit" name="formation">Ajouter</button>
     </form>
@@ -69,20 +94,51 @@ include "../../server/information.php";
     <form action="" method="post">
 
         <label>Nom de l'entreprise :</label>
-        <input name="company" type="text" />
+        <input name="company" type="text" value="<?php echo isset($_POST['company']) ? $_POST['company'] : ''; ?>"/></br>
+        <?php
+        if (isset($_POST['pro']) && empty($company)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?>
 
         <label>Durée :</label>
         <div class="date">
             <p>Du</p>
-            <input name="dateStart" type="date">
+            <input name="dateStart" type="date" value="<?php echo isset($_POST['dateStart']) ? $_POST['dateStart'] : ''; ?>"/>
+            <?php
+            if (isset($_POST['pro']) && empty($dateStart)) {
+                echo "<h10>Champ vide</h10>";
+            }
+            ?>
             <p>au</p>
-            <input name="dateEnd" type="date" />
-        </div>
+            <input name="dateEnd" type="date" value="<?php echo isset($_POST['dateEnd']) ? $_POST['dateEnd'] : ''; ?>"/>
+            <?php
+            if (isset($_POST['pro']) && empty($dateEnd)) {
+                echo "<h10>Champ vide</h10>";
+            }
+            ?>
+        </div></br>
+        <?php
+        if (isset($_POST['pro']) && ($_POST['dateStart'] > $_POST['dateEnd']) ) {
+            echo "<h10>Ordre des dates invalide</h10>";
+        }
+        ?>
+
         <label>Poste :</label>
-        <input name="job" type="text" />
+        <input name="job" type="text" value="<?php echo isset($_POST['job']) ? $_POST['job'] : ''; ?>"/></br>
+        <?php
+        if (isset($_POST['pro']) && empty($job)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?>
 
         <label>Description :</label>
-        <input name="descriptions" type="text" /></p>
+        <input name="descriptions" type="text" value="<?php echo isset($_POST['descriptions']) ? $_POST['descriptions'] : ''; ?>"/></br>
+        <?php
+        if (isset($_POST['pro']) && empty($descriptions)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?><p></p>
 
         <button type="submit" name="pro">Ajouter</button>
     </form>
