@@ -28,6 +28,11 @@ h1 {
     color: #2ecc71;
 }
 
+h10 {
+    color: red;
+    font-size: 10px;
+}
+
 label {
     display: block;
     margin: 10px 0;
@@ -37,7 +42,6 @@ label {
 input {
     width: 90%;
     padding: 10px;
-    margin-bottom: 10px;
     box-sizing: border-box;
     background-color: #9c9c9c;
     border-radius: 10px;

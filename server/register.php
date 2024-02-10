@@ -12,10 +12,9 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $checkPassword = $_POST['checkPassword'];
 
-    if ($password == $checkPassword) {
+    if (!empty($lastName) && !empty($firstName) && !empty($email) && !empty($phone) && !empty($username) && !empty($password) && !empty($checkPassword) && $password == $checkPassword) {
         $user = $bdd->prepare("INSERT INTO users (Last_name, First_name, Email, Phone_tel, Username, Password) VALUES (?, ?, ?, ?, ?, ?)");
         $user->execute([$lastName, $firstName, $email, $phone, $username, $password]);
         header('Location: ../Templates/connection.php');
     }
-
 }
