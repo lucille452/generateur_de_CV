@@ -20,7 +20,7 @@ include "../../server/information.php";
     $experiences->execute([GetUserID()]);
 
     while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
-        echo "<div style='display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Diploma']. "</p>";
+        echo "<div style='background-color: #1e1e1e; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Diploma']. "</p>";
         echo "<p>" . $row['Date_start']. "</p>";
         echo "<p>" . $row['Date_end']. "</p>";
         echo "<p>" . $row['School']. "</p></div>";
@@ -57,7 +57,7 @@ include "../../server/information.php";
     $experiences->execute([GetUserID()]);
 
     while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
-        echo "<div style='display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Company']. "</p>";
+        echo "<div style='background-color: #1e1e1e; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Company']. "</p>";
         echo "<p>" . $row['Date_start']. "</p>";
         echo "<p>" . $row['Date_end']. "</p>";
         echo "<p>" . $row['Job']. "</p>";
