@@ -10,10 +10,11 @@ include '../../server/register.php';
     <title>Inscription</title>
 </head>
 <body>
+<div class="block">
 <div class="container">
     <h1>Inscription</h1>
 
-    <form action="" method="post">
+    <form style="margin-bottom: 2vh;" action="" method="post">
         <label>Nom :</label>
         <input name="lastName" type="text" />
 
@@ -37,10 +38,9 @@ include '../../server/register.php';
 
         <button type="submit" name="submit">S'inscrire</button>
     </form>
-
+    <a href="home.php">Retour Connexion</a>
 </div>
-
-<!--button retour a la page connexion-->
+</div>
 
 </body>
 </html>

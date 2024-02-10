@@ -1,11 +1,17 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    text-align: center;
     height: 100vh;
     margin: 30px;
     background-color: #1e1e1e;
     color: #fff;
+}
+
+.block {
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {

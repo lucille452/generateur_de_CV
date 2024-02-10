@@ -10,6 +10,8 @@ include '../../server/connection.php';
     <title>Connexion</title>
 </head>
 <body>
+<h1>Générateur de Cv</h1>
+<div class="block">
 <div class="container">
     <h1>Connexion</h1>
 
@@ -28,6 +30,7 @@ include '../../server/connection.php';
     <a href="sign_up.php">
         <button>S'inscrire</button>
     </a>
+</div>
 </div>
 
 </body>
