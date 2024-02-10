@@ -1,3 +1,7 @@
+<?php
+include '../../server/curiculum.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +27,8 @@
         }
         ?>
     </div>
+
+    <form action="" method="post">
     <section>
         <?php
         $experiences = $bdd->prepare('SELECT * FROM experiences WHERE User_id=?');
@@ -34,7 +40,8 @@
             echo "<p>" . $row['Date_end']. "</p>";
             echo "<p>" . $row['Job']. "</p>";
             echo "<p>" . $row['Descriptions']. "</p></div>";
-            echo "<input type='checkbox'></div>";
+            $id = $row['Experience_id'];
+            echo "<input type='checkbox' name='$id'></div>";
         }
 
         ?>
@@ -42,25 +49,36 @@
 
     <section>
         <?php
-        $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
+        $academics = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
+        $academics->execute([GetUserID()]);
 
-        $experiences = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
-        $experiences->execute([GetUserID()]);
-
-        while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
             echo "<div><div style='color: white; width: 20vh; margin: 30px; background-color: #2a2a2a; padding: 10px; border-radius: 10px; border: 2px solid #2ecc71; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;'><p style='color: #27ae60'>" . $row['Diploma']. "</p>";
             echo "<p>" . $row['Date_start']. "</p>";
             echo "<p>" . $row['Date_end']. "</p>";
             echo "<p>" . $row['School']. "</p></div>";
-            echo "<input type='checkbox'></div>";
+            $id = $row['Academic_id'];
+            echo "<input type='checkbox' name='$id'></div>";
         }
 
         ?>
     </section>
-<!--hobbies-->
-<!--photo-->
-<!--models-->
-<!--check to pdf-->
+    <section class="hobbies">
+        <label>Hobbies</label>
+        <input name="hobbies" type="text">
+    </section>
+    <section class="hobbies">
+        <label>Job</label>
+        <input name="job" type="text">
+    </section>
+<!--        <section>-->
+<!--        <label>Photo</label>-->
+<!--        <input name="photo" type="image">-->
+<!--        </section>-->
+        <!--models-->
+        <!--check to pdf-->
+        <button type="submit" name="submit">Créer le Cv</button>
+    </form>
 
 </body>
 </html>

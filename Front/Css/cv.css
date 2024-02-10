@@ -14,7 +14,7 @@ section{
     border-radius: 20px;
 }
 
-input{
+input[type=checkbox] {
     margin-bottom: 5vh;
 }
 
@@ -28,4 +28,25 @@ input{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     color: white;
+}
+
+input[type=text] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    background-color: #9c9c9c;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+.hobbies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
