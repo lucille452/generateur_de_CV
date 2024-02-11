@@ -21,8 +21,7 @@ include '../../server/curiculum.php';
             echo "<p>" . $row['Last_name']. "</p>";
             echo "<p>" . $row['First_name']. "</p>";
             echo "<p>" . $row['Email']. "</p>";
-            echo "<p>" . $row['Phone_tel']. "</p>";
-            echo "<p>" . $row['Username']. "</p></div>";
+            echo "<p>" . $row['Phone_tel']. "</p></div>";
         }
         ?>
     </div>
@@ -94,6 +93,31 @@ include '../../server/curiculum.php';
 <!--        <label>Photo</label>-->
 <!--        <input name="photo" type="image">-->
 <!--        </section>-->
+        <section>
+            <div>
+                <h1>Modèle CV</h1>
+            </div>
+            <div class="info">
+            <div class="divImage">
+                <div>
+                    <img src="../image/model1.png">
+                </div>
+                <input type="checkbox" name="1">
+            </div>
+            <div class="divImage">
+                <div>
+                    <img src="../image/model2.png">
+                </div>
+                <input type="checkbox" name="2">
+            </div>
+            <div class="divImage">
+                <div>
+                    <img src="../image/model3.png">
+                </div>
+                <input type="checkbox" name="3">
+            </div>
+            </div>
+        </section>
         <!--models-->
         <!--check to pdf-->
         <button type="submit" name="submit">Créer le Cv</button>

@@ -9,7 +9,7 @@
 
 <div class="title">
     <?php
-    include '../../server/information.php';
+    include '../../server/curiculum.php';
 
     global $bdd;
     $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
@@ -18,6 +18,13 @@
     while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
         echo "<img>";
         echo "<h1>" . strtoupper($row['Last_name']) . " " . $row['First_name'] . "</h1>";
+    }
+
+    $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
+    $cv->execute([GetUserID()]);
+
+    while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {
+        echo "<p>". ucfirst($row['Job']) ."</p>";
     }
     ?>
 </div>
@@ -42,11 +49,14 @@
 <section>
     <h2>Parcours Académique</h2>
     <?php
-
-    while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
-        echo "<h3>" . $row['Diploma'] ."</h3>";
-        echo "<p><strong>Établissement: </strong>" . $row['School'] ."</p>";
-        echo "<p><strong>Date: </strong>". $row['Date_start'] . $row['Date_end'] ."</p>";
+    foreach ($_SESSION['listAcademics'] as $academicID) {
+        $academics = $bdd->prepare("SELECT * FROM academics WHERE Academic_id=?");
+        $academics->execute([$academicID]);
+        while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
+            echo "<h3>" . $row['Diploma'] . "</h3>";
+            echo "<p><strong>Établissement: </strong>" . $row['School'] . "</p>";
+            echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
+        }
     }
     ?>
 </section>
@@ -54,12 +64,15 @@
 <section>
     <h2>Expérience Professionnelle</h2>
     <?php
-
-    while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
-        echo "<h3>" . $row['Job'] ."</h3>";
-        echo "<p><strong>Entreprise: </strong>". $row['Company'] ."</p>";
-        echo "<p><strong>Date: </strong>". $row['Date_start'] . $row['Date_end'] ."</p>";
-        echo "<p><strong>Description: </strong>". $row['Descriptions'] ."</p>";
+    foreach ($_SESSION['listExperiences'] as $experienceID) {
+        $experiences = $bdd->prepare("SELECT * FROM experiences WHERE Experience_id=?");
+        $experiences->execute([$experienceID]);
+        while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
+            echo "<h3>" . $row['Job'] . "</h3>";
+            echo "<p><strong>Entreprise: </strong>" . $row['Company'] . "</p>";
+            echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
+            echo "<p><strong>Description: </strong>" . $row['Descriptions'] . "</p>";
+        }
     }
     ?>
 </section>
@@ -68,7 +81,7 @@
     <h2>Loisir</h2>
     <?php
     global $bdd;
-    $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=?");   //TODO id du cv
+    $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
     $cv->execute([GetUserID()]);
 
     while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {

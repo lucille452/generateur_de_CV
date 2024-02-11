@@ -4,27 +4,27 @@ include 'information.php';
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
+$_SESSION['listAcademics'] = [];
+$_SESSION['listExperiences'] = [];
+
 if (isset($_POST['submit'])) {
 
     $job = $_POST['job'];
     $hobbies = $_POST['hobbies'];
 
-    // Liste de toutes les académies + liste de toutes les expériences checkbox
-    $listAcademics = [];
-    $listExperiences = [];
-
-    for ($i = 1; $i < 50; $i++) {
+    // Liste de toutes les id académies + liste de toutes les id expériences checkbox
+    for ($i = 1; $i < 100; $i++) {
         if (!empty($_POST["academic$i"])){
-            $listAcademics[] = $i;
+            $_SESSION['listAcademics'] = $i;
         }
     }
-    for ($j = 1; $j < 50; $j++) {
+    for ($j = 1; $j < 100; $j++) {
         if (!empty($_POST["experience$j"])){
-            $listExperiences[] = $j;
+            $_SESSION['listExperiences'] = $j;
         }
     }
-//
-//    for ($k = 0; $k < 3; $k++) {
+
+//    for ($k = 0; $k < 1; $k++) {
 //        echo $listExperiences[$k];
 //    }
 

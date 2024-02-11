@@ -79,3 +79,12 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
+
+img{
+    width: 40vh;
+    height: auto;
+}
+
+.divImage {
+    margin: 10px;
+}

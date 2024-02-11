@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../Css/model2.css">
+    <link rel="stylesheet" href="../Css/model3.css">
     <meta charset="UTF-8">
     <title>Curriculum Vitae</title>
     <style>
@@ -19,7 +19,8 @@
         $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
         $user->execute([GetUserID()]);
 
-        $job = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");
+        $jobQuery = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");
+        $job = $jobQuery->fetch(PDO::FETCH_ASSOC)['Job'];
 
         while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
             echo '<img src="votre-photo.jpg" alt="Votre Photo" width="150" height="150" style="border-radius: 50%;">';
