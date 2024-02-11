@@ -41,7 +41,7 @@
     </div>
     <!--possibilité de deconnexion-->
     <a href="home.php">
-        <img src="../image/option-de-deconnexion.png">
+        <img src="../image/deconnexion.png">
     </a>
 </header>
 
