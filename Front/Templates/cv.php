@@ -30,6 +30,10 @@ include '../../server/curiculum.php';
 
     <form action="" method="post">
     <section>
+        <div>
+        <h1>Epxériences Professionnelle</h1>
+        </div>
+        <div class="info">
         <?php
         $experiences = $bdd->prepare('SELECT * FROM experiences WHERE User_id=?');
         $experiences->execute([GetUserID()]);
@@ -41,13 +45,18 @@ include '../../server/curiculum.php';
             echo "<p>" . $row['Job']. "</p>";
             echo "<p>" . $row['Descriptions']. "</p></div>";
             $id = $row['Experience_id'];
-            echo "<input type='checkbox' name='$id'></div>";
+            echo "<input type='checkbox' name='experience$id'></div>";
         }
 
         ?>
+        </div>
     </section>
 
     <section>
+        <div>
+        <h1>Parcours Académique</h1>
+        </div>
+        <div class="info">
         <?php
         $academics = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
         $academics->execute([GetUserID()]);
@@ -58,16 +67,17 @@ include '../../server/curiculum.php';
             echo "<p>" . $row['Date_end']. "</p>";
             echo "<p>" . $row['School']. "</p></div>";
             $id = $row['Academic_id'];
-            echo "<input type='checkbox' name='$id'></div>";
+            echo "<input type='checkbox' name='academic$id'></div>";
         }
 
         ?>
+        </div>
     </section>
-    <section class="hobbies">
+    <section class="hobbies info">
         <label>Hobbies</label>
         <input name="hobbies" type="text">
     </section>
-    <section class="hobbies">
+    <section class="hobbies info">
         <label>Job</label>
         <input name="job" type="text">
     </section>

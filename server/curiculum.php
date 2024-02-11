@@ -2,32 +2,35 @@
 
 //require_once 'information.php';
 
-$bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
-
-
 if (isset($_POST['submit'])) {
 
     $job = $_POST['job'];
     $hobbies = $_POST['hobbies'];
 
-    //    list de tout les academics + list de tous les experiences checkbox
-    $academics = [];
-    $experiences = [];
+    // Liste de toutes les académies + liste de toutes les expériences checkbox
+    $listAcademics = [];
+    $listExperiences = [];
 
-    for ($i = 1; $i < 40; $i++) {
-        if (!empty($_POST[$i])){
-            $academics[] = $i;
+    for ($i = 1; $i < 50; $i++) {
+        if (!empty($_POST["academic$i"])){
+            $listAcademics[] = $i;
         }
     }
-    for ($i = 1; $i < 40; $i++) {
-        if (!empty($_POST[$i])){
-            $experiences[] = $i;
+    for ($j = 1; $j < 50; $j++) {
+        if (!empty($_POST["experience$j"])){
+            $listExperiences[] = $j;
         }
     }
+//
+//    for ($k = 0; $k < 3; $k++) {
+//        echo $listExperiences[$k];
+//    }
 
-    if (!empty($job) && !empty($hobbies)) {
-        $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id, Academics, Experiences) VALUES (?, ?, ?, ?, ?)");
-        $cv->execute([$job, $hobbies, GetUserID(), $academics, $experiences]);
-    }
+
+//    if (!empty($job) && !empty($hobbies)) {
+//        global $bdd;
+//        $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id) VALUES (?, ?, ?)");
+//        $cv->execute([$job, $hobbies, GetUserID()]);
+//    }
 }
 ?>
