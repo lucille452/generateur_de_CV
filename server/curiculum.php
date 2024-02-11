@@ -1,6 +1,8 @@
 <?php
 
-//require_once 'information.php';
+include 'information.php';
+
+$bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
 if (isset($_POST['submit'])) {
 
@@ -26,11 +28,9 @@ if (isset($_POST['submit'])) {
 //        echo $listExperiences[$k];
 //    }
 
-
-//    if (!empty($job) && !empty($hobbies)) {
-//        global $bdd;
-//        $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id) VALUES (?, ?, ?)");
-//        $cv->execute([$job, $hobbies, GetUserID()]);
-//    }
+    if (!empty($job) && !empty($hobbies)) {
+        $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id) VALUES (?, ?, ?)");
+        $cv->execute([$job, $hobbies, GetUserID()]);
+    }
 }
 ?>

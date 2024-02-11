@@ -27,6 +27,11 @@ h1 {
     margin-bottom: 10px;
 }
 
+h10 {
+    color: red;
+    font-size: 10px;
+}
+
 .div {
     width: 40vh;
     margin: 30px;
@@ -52,6 +57,21 @@ label {
     display: block;
     margin: 10px 0;
     color: #ffffff;
+}
+
+button {
+    width: 20%;
+    padding: 10px;
+    margin-left: 40%;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #27ae60;
+    cursor: pointer;
 }
 
 .hobbies {

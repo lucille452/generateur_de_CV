@@ -13,7 +13,6 @@ include '../../server/curiculum.php';
 
     <div class="div">
         <?php
-        require '../../server/information.php';
         $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
         $user = $bdd->prepare('SELECT * FROM users WHERE Username=?');
         $user->execute([$_SESSION['username']]);
@@ -75,11 +74,21 @@ include '../../server/curiculum.php';
     </section>
     <section class="hobbies info">
         <label>Hobbies</label>
-        <input name="hobbies" type="text">
+        <input name="hobbies" type="text" value="<?php echo isset($_POST['hobbies']) ? $_POST['hobbies'] : ''; ?>"/>
+        <?php
+        if (isset($_POST['hobbies']) && empty($hobbies)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?>
     </section>
     <section class="hobbies info">
         <label>Job</label>
-        <input name="job" type="text">
+        <input name="job" type="text" value="<?php echo isset($_POST['job']) ? $_POST['job'] : ''; ?>"/>
+        <?php
+        if (isset($_POST['job']) && empty($job)) {
+            echo "<h10>Champ vide</h10>";
+        }
+        ?>
     </section>
 <!--        <section>-->
 <!--        <label>Photo</label>-->
