@@ -21,7 +21,25 @@ input[type=checkbox] {
     margin-bottom: 5vh;
 }
 
+input[type='file'], input[type='submit'] {
+    border-style: solid;
+    background-color: #2a2a2a;
+    color: #2ecc71;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+input[type='file'], input[type='submit']:hover {
+    cursor: pointer;
+}
+
 h1 {
+    color: #9c9c9c;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.photo {
     color: #9c9c9c;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -87,4 +105,13 @@ img{
 
 .divImage {
     margin: 10px;
+}
+
+a{
+    color: #27ae60;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
 }

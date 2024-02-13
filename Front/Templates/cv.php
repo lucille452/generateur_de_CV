@@ -26,7 +26,7 @@ include '../../server/curiculum.php';
         ?>
     </div>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
     <section>
         <div>
         <h1>Epxériences Professionnelle</h1>
@@ -89,10 +89,6 @@ include '../../server/curiculum.php';
         }
         ?>
     </section>
-<!--        <section>-->
-<!--        <label>Photo</label>-->
-<!--        <input name="photo" type="image">-->
-<!--        </section>-->
         <section>
             <div>
                 <h1>Modèle CV</h1>
@@ -102,26 +98,31 @@ include '../../server/curiculum.php';
                 <div>
                     <img src="../image/model1.png">
                 </div>
-                <input type="checkbox" name="1">
+                <input type="radio" value="1" name="model">
             </div>
             <div class="divImage">
                 <div>
                     <img src="../image/model2.png">
                 </div>
-                <input type="checkbox" name="2">
+                <input type="radio" value="2" name="model">
             </div>
             <div class="divImage">
                 <div>
                     <img src="../image/model3.png">
                 </div>
-                <input type="checkbox" name="3">
+                <input type="radio" value="3" name="model">
             </div>
             </div>
         </section>
-        <!--models-->
+        <section class="info">
+            <label for="img" class="photo">Selectionner votre photo :  </label>
+            <input type="file" id="img" name="img" accept="image/*">
+            <input type="submit" name="upload" value="Upload">
+        </section>
         <!--check to pdf-->
         <button type="submit" name="submit">Créer le Cv</button>
-    </form>
+    </form></br>
+    <a href="home1.php">Retour page d'Accueil</a>
 
 </body>
 </html>
