@@ -49,15 +49,14 @@
 <section>
     <h2>Parcours Académique</h2>
     <?php
-    foreach ($_SESSION['listAcademics'] as $academicID) {
         $academics = $bdd->prepare("SELECT * FROM academics WHERE Academic_id=?");
         $academics->execute([$academicID]);
+
         while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
             echo "<h3>" . $row['Diploma'] . "</h3>";
             echo "<p><strong>Établissement: </strong>" . $row['School'] . "</p>";
             echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
         }
-    }
     ?>
 </section>
 
@@ -89,7 +88,9 @@
     }
     ?>
 </section>
-
+<form action="../../server/toPdf.php" method="post">
+<input type="submit" name="submit" value="Télécharger en pdf">
+</form>
 </body>
 </html>
 

@@ -1,3 +1,7 @@
+<?php
+include '../../server/toPdf.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,6 +93,5 @@
 
     </div>
 </div>
-
 </body>
 </html>
