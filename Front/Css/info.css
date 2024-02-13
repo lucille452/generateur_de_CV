@@ -40,9 +40,14 @@ h2{
     color: white;
 }
 
-h10 {
-    color: red;
-    font-size: 10px;
+input[type='image'] {
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+}
+
+input[type='image']:hover{
+    cursor: pointer;
 }
 
 a{
@@ -60,7 +65,7 @@ label {
     color: #ffffff;
 }
 
-input {
+input[type='text'], input[type='date'] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;

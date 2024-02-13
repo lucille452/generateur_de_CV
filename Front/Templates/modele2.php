@@ -17,7 +17,7 @@
 
         global $bdd;
         $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-        $user->execute([GetUserID()]);
+        $user->execute([getUserID()]);
 
         $jobQuery = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");
         $job = $jobQuery->fetch(PDO::FETCH_ASSOC)['Job'];
@@ -69,7 +69,7 @@
         <?php
         global $bdd;
         $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
-        $cv->execute([GetUserID()]);
+        $cv->execute([getUserID()]);
 
         while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {
             echo "<p>". $row['Hobbies'] ."</p>";

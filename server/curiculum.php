@@ -28,16 +28,14 @@ if (isset($_POST['submit'])) {
 
     if (!empty($job) && !empty($hobbies) && !empty($model)) {
         $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id, Model) VALUES (?, ?, ?, ?)");
-        $cv->execute([$job, $hobbies, GetUserID(), $model]);
+        $cv->execute([$job, $hobbies, getUserID(), $model]);
 
-        $cvID = $bdd->prepare("SELECT * FROM cv ORDER BY Cv_id DESC LIMIT 1");
-        $cvID->execute();
-        $cvID = $cvID->fetch(PDO::FETCH_ASSOC);
-
+        include 'CV/services.php';
+        $cvID = getLastCvId($bdd);
         include 'academics/services.php';
-        addLiaisonAca($bdd, $cvID['Cv_id']);
+        addLiaisonAca($bdd, $cvID);
         include 'experiences/services.php';
-        addLiaisonExpe($bdd, $cvID['Cv_id']);
+        addLiaisonExpe($bdd, $cvID);
         header('Location: ../Templates/modele' . $model . '.php');
 
 

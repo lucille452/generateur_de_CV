@@ -17,13 +17,15 @@ include "../../server/information.php";
     $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
     $experiences = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
-    $experiences->execute([GetUserID()]);
+    $experiences->execute([getUserID()]);
 
     while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
         echo "<div style='background-color: #1e1e1e; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Diploma']. "</p>";
         echo "<p>" . $row['Date_start']. "</p>";
         echo "<p>" . $row['Date_end']. "</p>";
-        echo "<p>" . $row['School']. "</p></div>";
+        echo "<p>" . $row['School']. "</p>";
+        echo "<input type='image' src='../image/crayon.png'>";
+        echo "<input type='image' src='../image/corbeille.png'></div>";
     }
 
     ?>
@@ -79,14 +81,16 @@ include "../../server/information.php";
     $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
     $experiences = $bdd->prepare('SELECT * FROM experiences WHERE User_id=?');
-    $experiences->execute([GetUserID()]);
+    $experiences->execute([getUserID()]);
 
     while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
         echo "<div style='background-color: #1e1e1e; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Company']. "</p>";
         echo "<p>" . $row['Date_start']. "</p>";
         echo "<p>" . $row['Date_end']. "</p>";
         echo "<p>" . $row['Job']. "</p>";
-        echo "<p>" . $row['Descriptions']. "</p></div>";
+        echo "<p>" . $row['Descriptions']. "</p>";
+        echo "<input type='image' name='update{$row['Experience_id']}' src='../image/crayon.png'>";
+        echo "<input type='image' name='delete{$row['Experience_id']}' src='../image/corbeille.png'></div>";
     }
 
     ?>

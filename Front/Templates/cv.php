@@ -34,7 +34,7 @@ include '../../server/curiculum.php';
         <div class="info">
         <?php
         $experiences = $bdd->prepare('SELECT * FROM experiences WHERE User_id=?');
-        $experiences->execute([GetUserID()]);
+        $experiences->execute([getUserID()]);
 
         while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
             echo "<div><div style='color: white; width: 20vh; margin: 30px; background-color: #2a2a2a; padding: 10px; border-radius: 10px; border: 2px solid #2ecc71; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;'><p style='color: #27ae60'>" . $row['Company']. "</p>";
@@ -57,7 +57,7 @@ include '../../server/curiculum.php';
         <div class="info">
         <?php
         $academics = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
-        $academics->execute([GetUserID()]);
+        $academics->execute([getUserID()]);
 
         while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
             echo "<div><div style='color: white; width: 20vh; margin: 30px; background-color: #2a2a2a; padding: 10px; border-radius: 10px; border: 2px solid #2ecc71; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;'><p style='color: #27ae60'>" . $row['Diploma']. "</p>";

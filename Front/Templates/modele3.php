@@ -23,7 +23,7 @@ include '../../server/toPdf.php';
 
         //get info user to table user
         $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-        $user->execute([GetUserID()]);
+        $user->execute([getUserID()]);
 
         //get job to table cv
         $jobQuery = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");
@@ -83,7 +83,7 @@ include '../../server/toPdf.php';
 
         //get other info to cv
         $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
-        $cv->execute([GetUserID()]);
+        $cv->execute([getUserID()]);
 
         //show info
         while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {

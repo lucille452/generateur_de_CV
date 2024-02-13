@@ -2,7 +2,7 @@
 function addLiaisonExpe($bdd, $cvID)
 {
     $experiences = $bdd->prepare("SELECT * FROM experiences WHERE User_id=?");
-    $experiences->execute([GetUserID()]);
+    $experiences->execute([getUserID()]);
 
     while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
         if (!empty($_POST["experience{$row['Experience_id']}"])) {
@@ -11,6 +11,13 @@ function addLiaisonExpe($bdd, $cvID)
             $liaison->execute([$id, intval($cvID)]);
         }
     }
+}
+
+function getExperiencesForCV($bdd)
+{
+    $experiences = $bdd->prepare("SELECT * FROM experiences LEFT JOIN liaison_experience ON experiences.Experience_id = liaison_experience.Experience_id LEFT JOIN cv ON cv.Cv_id = liaison_experience.Cv_id WHERE experiences.User_id=? AND cv.Cv_id=?");
+    $experiences->execute([getUserID(), getLastCvId($bdd)]);
+    return $experiences;
 
 }
 

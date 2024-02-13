@@ -2,7 +2,7 @@
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
-function GetUserID()
+function getUserID()
 {
     global $bdd;
     $userIdQuery = $bdd->prepare("SELECT User_id FROM users WHERE username=?");
@@ -21,7 +21,7 @@ if (isset($_POST['formation'])) {
 
     if (!empty($diploma) && !empty($dateStart) && !empty($dateEnd) && !empty($school) && $dateStart < $dateEnd) {
         $academics = $bdd->prepare("INSERT INTO academics (Diploma, Date_start, Date_end, School, User_id) VALUES (?, ?, ?, ?, ?)");
-        $academics->execute([$diploma, $dateStart, $dateEnd, $school, GetUserID()]);
+        $academics->execute([$diploma, $dateStart, $dateEnd, $school, getUserID()]);
     }
 }
 
@@ -34,6 +34,6 @@ if (isset($_POST['pro'])) {
 
     if (!empty($company) && !empty($dateStart) && !empty($dateEnd) && !empty($job) && !empty($descriptions) && $dateStart < $dateEnd) {
         $experiences = $bdd->prepare("INSERT INTO experiences (Company, Date_start, Date_end, Job, Descriptions, User_id) VALUES (?, ?, ?, ?, ?, ?)");
-        $experiences->execute([$company, $dateStart, $dateEnd, $job, $descriptions, GetUserID()]);
+        $experiences->execute([$company, $dateStart, $dateEnd, $job, $descriptions, getUserID()]);
     }
 }

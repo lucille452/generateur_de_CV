@@ -13,7 +13,7 @@
 
     global $bdd;
     $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-    $user->execute([GetUserID()]);
+    $user->execute([getUserID()]);
 
     while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
         echo "<img>";
@@ -21,7 +21,7 @@
     }
 
     $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
-    $cv->execute([GetUserID()]);
+    $cv->execute([getUserID()]);
 
     while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {
         echo "<p>". ucfirst($row['Job']) ."</p>";
@@ -36,7 +36,7 @@
             <?php
             global $bdd;
             $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-            $user->execute([GetUserID()]);
+            $user->execute([getUserID()]);
             while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
                 echo "<li><strong>Téléphone: </strong>" . $row['Phone_tel'] ."</li>";
                 echo "<li><strong>Email: </strong>" . $row['Email'] ."</li>";
@@ -49,9 +49,9 @@
 <section>
     <h2>Parcours Académique</h2>
     <?php
-        $academics = $bdd->prepare("SELECT * FROM academics WHERE Academic_id=?");
-        $academics->execute([$academicID]);
-
+    include '../../server/academics/services.php';
+    include '../../server/CV/services.php';
+    $academics = getAcademicsForCV($bdd);
         while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
             echo "<h3>" . $row['Diploma'] . "</h3>";
             echo "<p><strong>Établissement: </strong>" . $row['School'] . "</p>";
@@ -63,16 +63,14 @@
 <section>
     <h2>Expérience Professionnelle</h2>
     <?php
-    foreach ($_SESSION['listExperiences'] as $experienceID) {
-        $experiences = $bdd->prepare("SELECT * FROM experiences WHERE Experience_id=?");
-        $experiences->execute([$experienceID]);
+    include '../../server/experiences/services.php';
+    $experiences = getExperiencesForCV($bdd);
         while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
             echo "<h3>" . $row['Job'] . "</h3>";
             echo "<p><strong>Entreprise: </strong>" . $row['Company'] . "</p>";
             echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
             echo "<p><strong>Description: </strong>" . $row['Descriptions'] . "</p>";
         }
-    }
     ?>
 </section>
 
@@ -81,7 +79,7 @@
     <?php
     global $bdd;
     $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
-    $cv->execute([GetUserID()]);
+    $cv->execute([getUserID()]);
 
     while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {
         echo "<p>". $row['Hobbies'] ."</p>";
