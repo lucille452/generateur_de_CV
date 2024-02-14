@@ -34,7 +34,6 @@
         <h2>Profil</h2>
         <ul>
             <?php
-            global $bdd;
             $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
             $user->execute([getUserID()]);
             while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
@@ -68,7 +67,6 @@
 <section>
     <h2>Loisir</h2>
     <?php
-    global $bdd;
     $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
     $cv->execute([getUserID()]);
 

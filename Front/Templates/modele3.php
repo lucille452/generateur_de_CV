@@ -61,8 +61,6 @@ include '../../server/toPdf.php';
 
         <h2>Loisir</h2>
         <?php
-        global $bdd;
-
         //get other info to cv
         $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
         $cv->execute([getUserID()]);

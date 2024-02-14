@@ -2,9 +2,7 @@
 
 session_start();
 
-
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
-
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];

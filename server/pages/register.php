@@ -2,7 +2,6 @@
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
-
 if (isset($_POST['submit'])) {
     $lastName = $_POST['lastName'];
     $firstName = $_POST['firstName'];

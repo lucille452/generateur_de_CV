@@ -53,7 +53,6 @@
 
         <h2>Loisir</h2>
         <?php
-        global $bdd;
         $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
         $cv->execute([getUserID()]);
 
