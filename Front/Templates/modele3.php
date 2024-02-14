@@ -17,7 +17,7 @@ include '../../server/toPdf.php';
 <div class="container">
     <div class="sidebar">
         <?php
-        include '../../server/information.php';
+        include '../../server/pages/information.php';
 
         global $bdd;
 

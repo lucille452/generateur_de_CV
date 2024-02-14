@@ -30,11 +30,11 @@ if (isset($_POST['submit'])) {
         $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id, Model) VALUES (?, ?, ?, ?)");
         $cv->execute([$job, $hobbies, getUserID(), $model]);
 
-        include 'CV/services.php';
+        include '../CV/services.php';
         $cvID = getLastCvId($bdd);
-        include 'academics/services.php';
+        include '../academics/services.php';
         addLiaisonAca($bdd, $cvID);
-        include 'experiences/services.php';
+        include '../experiences/services.php';
         addLiaisonExpe($bdd, $cvID);
         header('Location: ../Templates/modele' . $model . '.php');
 

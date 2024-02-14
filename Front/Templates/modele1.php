@@ -9,7 +9,7 @@
 
 <div class="title">
     <?php
-    include '../../server/curiculum.php';
+    include '../../server/pages/curiculum.php';
 
     global $bdd;
     $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");

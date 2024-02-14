@@ -13,7 +13,7 @@
 <div class="container">
     <div class="sidebar">
         <?php
-        include '../../server/information.php';
+        include '../../server/pages/information.php';
 
         global $bdd;
         $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
@@ -23,7 +23,7 @@
         $job = $jobQuery->fetch(PDO::FETCH_ASSOC)['Job'];
 
         while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
-            echo '<img src="votre-photo.jpg" alt="Votre Photo" width="150" height="150" style="border-radius: 50%;">';
+            echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
             echo "<h1 style='color: white'>". strtoupper($row['Last_name'])." ". $row['First_name'] ."</h1>";
             echo "<h3 style='color: white'>". ucfirst($job) . "</h3>";
             echo "<h2>Profil</h2>";

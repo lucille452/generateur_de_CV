@@ -1,5 +1,5 @@
 <?php
-include '../../server/curiculum.php';
+include '../../server/pages/curiculum.php';
 ?>
 
 <!DOCTYPE html>
