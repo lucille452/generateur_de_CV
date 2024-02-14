@@ -18,6 +18,13 @@ function getAcademicsForCV($bdd)
     $academics = $bdd->prepare("SELECT * FROM academics LEFT JOIN liaison_academic ON academics.Academic_id = liaison_academic.Academic_id LEFT JOIN cv ON cv.Cv_id = liaison_academic.Cv_id WHERE academics.User_id=? AND cv.Cv_id=?");
     $academics->execute([getUserID(), getLastCvId($bdd)]);
     return $academics;
-
 }
 
+function showDivAcademicsCV($academics)
+{
+    while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
+        echo "<h3>" . $row['Diploma'] . "</h3>";
+        echo "<p><strong>Établissement: </strong>" . $row['School'] . "</p>";
+        echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
+    }
+}

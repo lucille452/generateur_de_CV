@@ -46,35 +46,17 @@ include '../../server/toPdf.php';
     <div class="content">
         <h2>Parcours Académique</h2>
         <?php
-        foreach ($_SESSION['listAcademics'] as $academicID) {
-            //get academics choice by user for this cv
-            $academics = $bdd->prepare("SELECT * FROM academics WHERE Academic_id=?");
-            $academics->execute([$academicID]);
-
-            // show all academics
-            while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
-                echo "<h3>" . $row['Diploma'] . "</h3>";
-                echo "<p><strong>Établissement: </strong>" . $row['School'] . "</p>";
-                echo "<p><strong>Date: </strong>" . $row['Date_start'] . $row['Date_end'] . "</p>";
-            }
-        }
+        include '../../server/academics/services.php';
+        include '../../server/CV/services.php';
+        $academics = getAcademicsForCV($bdd);
+        showDivAcademicsCV($academics);
         ?>
 
         <h2>Expérience Professionnelle</h2>
         <?php
-        foreach ($_SESSION['listExperiences'] as $experienceID) {
-            //get experiences choice by user for this cv
-            $experiences = $bdd->prepare("SELECT * FROM experiences WHERE Experience_id=?");
-            $experiences->execute([$experienceID]);
-
-            //show all experiences
-            while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
-                echo "<h3>" . $row['Job'] . "</h3>";
-                echo "<p><strong>Entreprise : </strong>" . $row['Company'] . "</p>";
-                echo "<p><strong>Date : </strong>" . $row['Date_start'] . $row['Date_end'] . "</p>";
-                echo "<p><strong>Description : </strong>" . $row['Descriptions'] . "</p>";
-            }
-        }
+        include '../../server/experiences/services.php';
+        $experiences = getExperiencesForCV($bdd);
+        showDivExperiencesCV($experiences);
         ?>
 
         <h2>Loisir</h2>

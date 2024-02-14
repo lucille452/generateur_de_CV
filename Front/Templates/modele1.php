@@ -52,11 +52,7 @@
     include '../../server/academics/services.php';
     include '../../server/CV/services.php';
     $academics = getAcademicsForCV($bdd);
-        while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
-            echo "<h3>" . $row['Diploma'] . "</h3>";
-            echo "<p><strong>Établissement: </strong>" . $row['School'] . "</p>";
-            echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
-        }
+    showDivAcademicsCV($academics);
     ?>
 </section>
 
@@ -65,12 +61,7 @@
     <?php
     include '../../server/experiences/services.php';
     $experiences = getExperiencesForCV($bdd);
-        while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
-            echo "<h3>" . $row['Job'] . "</h3>";
-            echo "<p><strong>Entreprise: </strong>" . $row['Company'] . "</p>";
-            echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
-            echo "<p><strong>Description: </strong>" . $row['Descriptions'] . "</p>";
-        }
+    showDivExperiencesCV($experiences);
     ?>
 </section>
 
