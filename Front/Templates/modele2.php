@@ -14,10 +14,9 @@
     <div class="sidebar">
         <?php
         include '../../server/pages/information.php';
-
+        include '../../server/user/services.php';
         global $bdd;
-        $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-        $user->execute([getUserID()]);
+        $user = getInfoUserSession($bdd, getUserID());
 
         $jobQuery = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");
         $job = $jobQuery->fetch(PDO::FETCH_ASSOC)['Job'];

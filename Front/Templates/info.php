@@ -78,8 +78,6 @@ include "../../server/pages/information.php";
     <h1>Expériences Professionnelle</h1>
     <!--        list de tous le parcours académique-->
     <?php
-    $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
-
     $experiences = $bdd->prepare('SELECT * FROM experiences WHERE User_id=?');
     $experiences->execute([getUserID()]);
 

@@ -1,6 +1,8 @@
 <?php
 
 include 'information.php';
+include 'C:\xampp\htdocs\generateur_de_CV\server\academics\services.php';
+include 'C:\xampp\htdocs\generateur_de_CV\server\experiences\services.php';
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
@@ -30,11 +32,8 @@ if (isset($_POST['submit'])) {
         $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id, Model) VALUES (?, ?, ?, ?)");
         $cv->execute([$job, $hobbies, getUserID(), $model]);
 
-        include '../CV/services.php';
         $cvID = getLastCvId($bdd);
-        include '../academics/services.php';
         addLiaisonAca($bdd, $cvID);
-        include '../experiences/services.php';
         addLiaisonExpe($bdd, $cvID);
         header('Location: ../Templates/modele' . $model . '.php');
 

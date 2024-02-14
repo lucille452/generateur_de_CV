@@ -9,11 +9,10 @@
 
 <div class="title">
     <?php
-    include '../../server/pages/curiculum.php';
-
+    include 'C:\xampp\htdocs\generateur_de_CV\server\pages\curiculum.php';
+    include 'C:\xampp\htdocs\generateur_de_CV\server\user\services.php';
     global $bdd;
-    $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-    $user->execute([getUserID()]);
+    $user = getInfoUserSession($bdd, getUserID());
 
     while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
         echo "<img>";
@@ -34,8 +33,6 @@
         <h2>Profil</h2>
         <ul>
             <?php
-            $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-            $user->execute([getUserID()]);
             while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
                 echo "<li><strong>Téléphone: </strong>" . $row['Phone_tel'] ."</li>";
                 echo "<li><strong>Email: </strong>" . $row['Email'] ."</li>";
@@ -48,8 +45,6 @@
 <section>
     <h2>Parcours Académique</h2>
     <?php
-    include '../../server/academics/services.php';
-    include '../../server/CV/services.php';
     $academics = getAcademicsForCV($bdd);
     showDivAcademicsCV($academics);
     ?>
@@ -58,7 +53,6 @@
 <section>
     <h2>Expérience Professionnelle</h2>
     <?php
-    include '../../server/experiences/services.php';
     $experiences = getExperiencesForCV($bdd);
     showDivExperiencesCV($experiences);
     ?>
@@ -67,9 +61,6 @@
 <section>
     <h2>Loisir</h2>
     <?php
-    $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
-    $cv->execute([getUserID()]);
-
     while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {
         echo "<p>". $row['Hobbies'] ."</p>";
     }

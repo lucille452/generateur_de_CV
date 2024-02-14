@@ -18,12 +18,9 @@ include '../../server/toPdf.php';
     <div class="sidebar">
         <?php
         include '../../server/pages/information.php';
-
+        include '../../server/user/services.php';
         global $bdd;
-
-        //get info user to table user
-        $user = $bdd->prepare("SELECT * FROM users WHERE User_id=?");
-        $user->execute([getUserID()]);
+        $user = getInfoUserSession($bdd, getUserID());
 
         //get job to table cv
         $jobQuery = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");

@@ -1,4 +1,6 @@
 <?php
+include 'C:\xampp\htdocs\generateur_de_CV\server\CV\services.php';
+
 function addLiaisonAca($bdd, $cvID)
 {
     $academics = $bdd->prepare("SELECT * FROM academics WHERE User_id=?");
