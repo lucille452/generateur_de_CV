@@ -14,9 +14,7 @@
         .container {
             display: flex;
             max-width: 800px;
-            margin: 20px auto;
             background-color: #333333;
-            border: 1px solid #444;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             overflow: hidden;
         }

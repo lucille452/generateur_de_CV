@@ -7,7 +7,7 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background-color: #333;
+            background-color: #ffffff;
             color: #000000;
             margin: 0;
         }
@@ -16,7 +16,6 @@
             max-width: 800px;
             margin: 20px auto;
             background-color: #d3d3d3;
-            border: 1px solid #444;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             overflow: hidden;
         }
