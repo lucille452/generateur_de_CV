@@ -1,4 +1,4 @@
-### Générateur de CV
+# Générateur de CV
 
     Créer des cv en ligne, depuis le navigateur
     Afficher et modifier un cv déjà créé et stocker en base de donnée
