@@ -18,8 +18,9 @@
         global $bdd;
         $user = getInfoUserSession($bdd, getUserID());
 
-        $jobQuery = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");
-        $job = $jobQuery->fetch(PDO::FETCH_ASSOC)['Job'];
+        $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
+        $cv->execute([getUserID()]);
+        $job = $cv->fetch(PDO::FETCH_ASSOC)['Job'];
 
         while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
             echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
