@@ -24,9 +24,9 @@ if (isset($_POST['submit'])) {
 
     //----- Liste de toutes les id académies + liste de toutes les id expériences checkbox --------
 
-    $job = $_POST['job'];
-    $hobbies = $_POST['hobbies'];
-    $model = $_POST['model'];
+    @$job = $_POST['job'];
+    @$hobbies = $_POST['hobbies'];
+    @$model = $_POST['model'];
 
     if (!empty($job) && !empty($hobbies) && !empty($model)) {
         $cv = $bdd->prepare("INSERT INTO cv (Job, Hobbies, User_id, Model) VALUES (?, ?, ?, ?)");

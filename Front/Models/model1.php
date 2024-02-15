@@ -1,9 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../Css/model1.css">
     <meta charset="UTF-8">
     <title>Curriculum Vitae</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+        }
+
+        h1, h2, h3 {
+            color: #4285f4;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+
+        .title {
+            text-align: center;
+            display: block;
+            justify-content: center;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -71,9 +108,6 @@
     }
     ?>
 </section>
-<form action="../../server/toPdf.php" method="post">
-<input type="submit" name="modele1" value="Télécharger en pdf">
-</form>
 </body>
 </html>
 

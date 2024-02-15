@@ -22,10 +22,10 @@ function getExperiencesForCV($bdd)
 
 function showDivExperiencesCV($experiences)
 {
-    while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
-        echo "<h3>" . $row['Job'] . "</h3>";
-        echo "<p><strong>Entreprise : </strong>" . $row['Company'] . "</p>";
-        echo "<p><strong>Date : </strong>" . $row['Date_start'] . $row['Date_end'] . "</p>";
-        echo "<p><strong>Description : </strong>" . $row['Descriptions'] . "</p>";
+    while ($rowExpe = $experiences->fetch(PDO::FETCH_ASSOC)) {
+        echo "<h3>" . ucfirst($rowExpe['Job']) . "</h3>";
+        echo "<p><strong>Entreprise : </strong>" . $rowExpe['Company'] . "</p>";
+        echo "<p><strong>Date : </strong>" . $rowExpe['Date_start'] . $rowExpe['Date_end'] . "</p>";
+        echo "<p><strong>Description : </strong>" . $rowExpe['Descriptions'] . "</p>";
     }
 }

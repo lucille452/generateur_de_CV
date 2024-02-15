@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../Css/model2.css">
     <meta charset="UTF-8">
     <title>Curriculum Vitae</title>
     <style>
-
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #ffffff;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #333333;
+            border: 1px solid #444;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .sidebar {
+            background-color: #ff7359; /* Couleur verte foncée */
+            color: #ffffff;
+            padding: 20px;
+            width: 30%;
+            box-sizing: border-box;
+        }
+        .content {
+            padding: 20px;
+            width: 70%;
+            box-sizing: border-box;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        h1, h2, h3 {
+            color: #ff7359; /* Correspond à la couleur de la barre latérale */
+        }
+        h2 {
+            border-bottom: 2px solid #ff7359; /* Correspond à la couleur de la barre latérale */
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -15,14 +56,16 @@
         <?php
         include 'C:\xampp\htdocs\generateur_de_CV\server\pages\curiculum.php';
         include 'C:\xampp\htdocs\generateur_de_CV\server\user\services.php';
-        global $bdd;
+        $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
         $user = getInfoUserSession($bdd, getUserID());
 
+        //get job to table cv
         $jobQuery = $bdd->query("SELECT Job FROM cv ORDER BY Cv_id LIMIT 1");
         $job = $jobQuery->fetch(PDO::FETCH_ASSOC)['Job'];
 
+        //show infos
         while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
-            echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
+//            echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
             echo "<h1 style='color: white'>". strtoupper($row['Last_name'])." ". $row['First_name'] ."</h1>";
             echo "<h3 style='color: white'>". ucfirst($job) . "</h3>";
             echo "<h2>Profil</h2>";
@@ -49,9 +92,11 @@
 
         <h2>Loisir</h2>
         <?php
+        //get other info to cv
         $cv = $bdd->prepare("SELECT * FROM cv WHERE User_id=? ORDER BY Cv_id DESC LIMIT 1");
         $cv->execute([getUserID()]);
 
+        //show info
         while ($row = $cv->fetch(PDO::FETCH_ASSOC)) {
             echo "<p>". $row['Hobbies'] ."</p>";
         }
@@ -59,8 +104,5 @@
 
     </div>
 </div>
-<form action="../../server/toPdf.php" method="post">
-    <input type="submit" name="modele2" value="Télécharger en pdf">
-</form>
 </body>
 </html>

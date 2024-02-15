@@ -25,7 +25,7 @@ function getAcademicsForCV($bdd)
 function showDivAcademicsCV($academics)
 {
     while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
-        echo "<h3>" . $row['Diploma'] . "</h3>";
+        echo "<h3>" . ucfirst($row['Diploma']) . "</h3>";
         echo "<p><strong>Établissement: </strong>" . $row['School'] . "</p>";
         echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
     }

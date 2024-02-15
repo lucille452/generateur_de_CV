@@ -1,7 +1,3 @@
-<?php
-include '../../server/toPdf.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +13,7 @@ include '../../server/toPdf.php';
 <div class="container">
     <div class="sidebar">
         <?php
-        include '../../server/pages/information.php';
+        include '../../server/pages/curiculum.php';
         include '../../server/user/services.php';
         global $bdd;
         $user = getInfoUserSession($bdd, getUserID());
@@ -28,7 +24,7 @@ include '../../server/toPdf.php';
 
         //show infos
         while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
-            echo '<img src="votre-photo.jpg" alt="Votre Photo" width="150" height="150" style="border-radius: 50%;">';
+            echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
             echo "<h1 style='color: white'>". strtoupper($row['Last_name'])." ". $row['First_name'] ."</h1>";
             echo "<h3 style='color: white'>". ucfirst($job) . "</h3>";
             echo "<h2>Profil</h2>";
@@ -43,15 +39,12 @@ include '../../server/toPdf.php';
     <div class="content">
         <h2>Parcours Académique</h2>
         <?php
-        include '../../server/academics/services.php';
-        include '../../server/CV/services.php';
         $academics = getAcademicsForCV($bdd);
         showDivAcademicsCV($academics);
         ?>
 
         <h2>Expérience Professionnelle</h2>
         <?php
-        include '../../server/experiences/services.php';
         $experiences = getExperiencesForCV($bdd);
         showDivExperiencesCV($experiences);
         ?>
@@ -70,5 +63,8 @@ include '../../server/toPdf.php';
 
     </div>
 </div>
+<form action="../../server/toPdf.php" method="post">
+    <input type="submit" name="modele3" value="Télécharger en pdf">
+</form>
 </body>
 </html>

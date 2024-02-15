@@ -4,7 +4,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
 function getUserID()
 {
-    global $bdd;
+    $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
     $userIdQuery = $bdd->prepare("SELECT User_id FROM users WHERE username=?");
     $userIdQuery->execute([$_SESSION['username']]);
     $userId = $userIdQuery->fetchColumn();
