@@ -15,15 +15,28 @@
 
 ## Installation
 
-Clone repository :
+#### Avec phpMyAdmin
+
+Cloner le repository dans votre dossier racine, dans xampp, dans le dossier htdocs : 
+    
+    C:\xampp\htdocs
+
+#### Avec Laragon
+Cloner le repository dans votre dossier racine, dans laragon, dans le dossier www :
+
+    C:\laragon\www    
+
+Cloner repository :
  ```bash
  git clone https://github.com/lucille452/generateur_de_CV.git
  ```
 
-Database :
+## Lancer
 
-
-
+```bash
+php -S localhost:8080
+ ```
+Accédez à l'application dans le navigateur à l'adresse : http://localhost/Generateur_de_CV/Front/Templates.
 
 ## MCD
 
@@ -34,3 +47,4 @@ Database :
 ![MLD](MCD_MLD/MLD.png)
 
 ## Démonstration
+[![Demo Vidéo](Front/image/demo.png)](Demo/demo_generation_cv.mp4)
