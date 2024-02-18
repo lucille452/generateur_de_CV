@@ -42,3 +42,27 @@ h2 {
     border-bottom: 2px solid #ff7359; /* Correspond à la couleur de la barre latérale */
     padding-bottom: 10px;
 }
+
+input {
+    padding: 10px;
+    border-style: solid;
+    background-color: #2a2a2a;
+    color: #2ecc71;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+input:hover {
+    cursor: pointer;
+    color: #ff7359;
+}
+
+a{
+    margin-left: 20px;
+    color: #27ae60;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}

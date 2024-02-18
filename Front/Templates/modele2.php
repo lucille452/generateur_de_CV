@@ -57,8 +57,9 @@
 
     </div>
 </div>
-<form action="../../server/toPdf.php" method="post">
+<form action="../../server/toPdf.php" method="post" style="text-align: center">
     <input type="submit" name="modele2" value="Télécharger en pdf">
 </form>
 </body>
+<a href="javascript:history.back()">Retour</a>
 </html>
