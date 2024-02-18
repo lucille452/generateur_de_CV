@@ -30,3 +30,11 @@ function showDivAcademicsCV($academics)
         echo "<p><strong>Date: </strong>" . $row['Date_start'] . " à " . $row['Date_end'] . "</p>";
     }
 }
+
+function deleteAcademics($bdd, $id)
+{
+    $deleteAca = $bdd->prepare("DELETE FROM academics WHERE Academic_id=?");
+    $deleteAca->execute([$id]);
+    $deleteLiaison = $bdd->prepare("DELETE FROM liaison_academic WHERE Academic_id=?");
+    $deleteLiaison->execute([$id]);
+}

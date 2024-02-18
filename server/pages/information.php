@@ -1,4 +1,6 @@
 <?php
+include 'C:/xampp/htdocs/generateur_de_CV/server/experiences/services.php';
+include 'C:/xampp/htdocs/generateur_de_CV/server/academics/services.php';
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
@@ -35,5 +37,24 @@ if (isset($_POST['pro'])) {
     if (!empty($company) && !empty($dateStart) && !empty($dateEnd) && !empty($job) && !empty($descriptions) && $dateStart < $dateEnd) {
         $experiences = $bdd->prepare("INSERT INTO experiences (Company, Date_start, Date_end, Job, Descriptions, User_id) VALUES (?, ?, ?, ?, ?, ?)");
         $experiences->execute([$company, $dateStart, $dateEnd, $job, $descriptions, getUserID()]);
+    }
+}
+
+$experiencesUser = $bdd->prepare("SELECT * FROM experiences WHERE User_id=?");
+$experiencesUser->execute([getUserID()]);
+
+while ($row = $experiencesUser->fetch(PDO::FETCH_ASSOC)) {
+    if (isset($_POST["deleteExpe{$row['Experience_id']}"])) {
+        echo 'test2';
+        deleteExperience($bdd, $row['Experience_id']);
+    }
+}
+
+$academicsUser = $bdd->prepare("SELECT * FROM academics WHERE User_id=?");
+$academicsUser->execute([getUserID()]);
+
+while ($row = $academicsUser->fetch(PDO::FETCH_ASSOC)) {
+    if (isset($_POST["deleteAca{$row['Academic_id']}"])) {
+        deleteAcademics($bdd, $row['Academic_id']);
     }
 }

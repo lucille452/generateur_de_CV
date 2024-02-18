@@ -29,3 +29,11 @@ function showDivExperiencesCV($experiences)
         echo "<p><strong>Description : </strong>" . $rowExpe['Descriptions'] . "</p>";
     }
 }
+
+function deleteExperience($bdd, $id)
+{
+    $deleteExpe = $bdd->prepare("DELETE FROM experiences WHERE Experience_id=?");
+    $deleteExpe->execute([$id]);
+    $deleteLiaison = $bdd->prepare("DELETE FROM liaison_experience WHERE Experience_id=?");
+    $deleteLiaison->execute([$id]);
+}

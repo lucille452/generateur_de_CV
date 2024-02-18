@@ -16,16 +16,16 @@ include "../../server/pages/information.php";
     <?php
     $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
-    $experiences = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
-    $experiences->execute([getUserID()]);
+    $academics = $bdd->prepare('SELECT * FROM academics WHERE User_id=?');
+    $academics->execute([getUserID()]);
 
-    while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
+    while ($row = $academics->fetch(PDO::FETCH_ASSOC)) {
         echo "<div style='background-color: #1e1e1e; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-around; color: #c5c5c5'><p style='color: #27ae60'>" . $row['Diploma']. "</p>";
         echo "<p>" . $row['Date_start']. "</p>";
         echo "<p>" . $row['Date_end']. "</p>";
         echo "<p>" . $row['School']. "</p>";
-        echo "<input type='image' src='../image/crayon.png'>";
-        echo "<input type='image' src='../image/corbeille.png'></div>";
+        echo "<form action='' method='post'><input type='submit' value='' name='updateAca{$row['Academic_id']}' class='update'>";
+        echo "<input type='submit' value='' name='deleteAca{$row['Academic_id']}' class='delete'></div></form>";
     }
 
     ?>
@@ -87,8 +87,8 @@ include "../../server/pages/information.php";
         echo "<p>" . $row['Date_end']. "</p>";
         echo "<p>" . $row['Job']. "</p>";
         echo "<p>" . $row['Descriptions']. "</p>";
-        echo "<input type='image' name='update{$row['Experience_id']}' src='../image/crayon.png'>";
-        echo "<input type='image' name='delete{$row['Experience_id']}' src='../image/corbeille.png'></div>";
+        echo "<form action='' method='post'><input type='submit' value='' name='updateExpe{$row['Experience_id']}' class='update'>";
+        echo "<input type='submit' value='' name='deleteExpe{$row['Experience_id']}' class='delete'></div></form>";
     }
 
     ?>
