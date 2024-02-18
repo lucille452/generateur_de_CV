@@ -1,6 +1,6 @@
 <?php
-include 'C:/xampp/htdocs/generateur_de_CV/server/experiences/services.php';
-include 'C:/xampp/htdocs/generateur_de_CV/server/academics/services.php';
+include 'C:/xampp/htdocs/generateur_de_CV/server/experiences/middlewares.php';
+include 'C:/xampp/htdocs/generateur_de_CV/server/academics/middlewares.php';
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
@@ -43,18 +43,9 @@ if (isset($_POST['pro'])) {
 $experiencesUser = $bdd->prepare("SELECT * FROM experiences WHERE User_id=?");
 $experiencesUser->execute([getUserID()]);
 
-while ($row = $experiencesUser->fetch(PDO::FETCH_ASSOC)) {
-    if (isset($_POST["deleteExpe{$row['Experience_id']}"])) {
-        echo 'test2';
-        deleteExperience($bdd, $row['Experience_id']);
-    }
-}
+delExpe($bdd, $experiencesUser);
 
 $academicsUser = $bdd->prepare("SELECT * FROM academics WHERE User_id=?");
 $academicsUser->execute([getUserID()]);
 
-while ($row = $academicsUser->fetch(PDO::FETCH_ASSOC)) {
-    if (isset($_POST["deleteAca{$row['Academic_id']}"])) {
-        deleteAcademics($bdd, $row['Academic_id']);
-    }
-}
+delAca($bdd, $academicsUser);
