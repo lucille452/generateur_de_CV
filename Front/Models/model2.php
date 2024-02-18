@@ -7,26 +7,29 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background-color: #ffffff;
+            background-color: #d3d3d3;
             color: #000000;
             margin: 0;
         }
         .container {
+            position: absolute;
             display: flex;
             max-width: 800px;
-            margin: 20px auto;
             background-color: #d3d3d3;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             overflow: hidden;
         }
         .sidebar {
+            position: absolute;
             background-color: #388e3c; /* Couleur verte foncée */
             color: #ffffff;
             padding: 20px;
             width: 30%;
+            height: 100%;
             box-sizing: border-box;
         }
         .content {
+            margin-left: 240px;
             padding: 20px;
             width: 70%;
             box-sizing: border-box;
@@ -66,7 +69,7 @@
 //            echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
             echo "<h1 style='color: white'>". strtoupper($row['Last_name'])." ". $row['First_name'] ."</h1>";
             echo "<h3 style='color: white'>". ucfirst($job) . "</h3>";
-            echo "<h2>Profil</h2>";
+            echo "<h2 style='color: white'>Profil</h2>";
             echo "<ul>";
             echo "<li><strong>Téléphone: </strong>". $row['Phone_tel'] ."</li>";
             echo "<li><strong>Email: </strong>". $row['Email'] ."</li>";

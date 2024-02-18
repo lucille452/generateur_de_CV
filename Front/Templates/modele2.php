@@ -4,9 +4,6 @@
     <link rel="stylesheet" href="../Css/model2.css">
     <meta charset="UTF-8">
     <title>Curriculum Vitae</title>
-    <style>
-
-    </style>
 </head>
 <body>
 
@@ -26,7 +23,7 @@
             echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
             echo "<h1 style='color: white'>". strtoupper($row['Last_name'])." ". $row['First_name'] ."</h1>";
             echo "<h3 style='color: white'>". ucfirst($job) . "</h3>";
-            echo "<h2>Profil</h2>";
+            echo "<h2 style='color: white'>Profil</h2>";
             echo "<ul>";
             echo "<li><strong>Téléphone: </strong>". $row['Phone_tel'] ."</li>";
             echo "<li><strong>Email: </strong>". $row['Email'] ."</li>";

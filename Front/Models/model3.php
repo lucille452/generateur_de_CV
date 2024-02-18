@@ -7,11 +7,12 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            background-color: #ffffff;
+            background-color: #333333;
             color: #ffffff;
             margin: 0;
         }
         .container {
+            position: absolute;
             display: flex;
             max-width: 800px;
             background-color: #333333;
@@ -19,13 +20,16 @@
             overflow: hidden;
         }
         .sidebar {
+            position: absolute;
             background-color: #ff7359; /* Couleur verte foncée */
             color: #ffffff;
             padding: 20px;
             width: 30%;
+            height: 100%;
             box-sizing: border-box;
         }
         .content {
+            margin-left: 240px;
             padding: 20px;
             width: 70%;
             box-sizing: border-box;
@@ -65,12 +69,12 @@
         //show infos
         while ($row = $user->fetch(PDO::FETCH_ASSOC)) {
 //            echo '<img src="votre-photo.jpg" alt="" width="150" height="150" style="border-radius: 50%;">';
-            echo "<h1 style='color: white'>". strtoupper($row['Last_name'])." ". $row['First_name'] ."</h1>";
+            echo "<h1 style='color: #333333'>". strtoupper($row['Last_name'])." ". $row['First_name'] ."</h1>";
             echo "<h3 style='color: white'>". ucfirst($job) . "</h3>";
-            echo "<h2>Profil</h2>";
+            echo "<h2 style='color: #333333'>Profil</h2>";
             echo "<ul>";
-            echo "<li><strong>Téléphone: </strong>". $row['Phone_tel'] ."</li>";
-            echo "<li><strong>Email: </strong>". $row['Email'] ."</li>";
+            echo "<li><strong style='color: #333333'>Téléphone : </strong>". $row['Phone_tel'] ."</li>";
+            echo "<li><strong style='color: #333333'>Email : </strong>". $row['Email'] ."</li>";
             echo "</ul>";
         }
         ?>
