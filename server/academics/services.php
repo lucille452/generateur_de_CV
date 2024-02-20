@@ -1,5 +1,4 @@
 <?php
-include 'C:\xampp\htdocs\generateur_de_CV\server\CV\services.php';
 
 function addLiaisonAca($bdd, $cvID)
 {
@@ -15,10 +14,10 @@ function addLiaisonAca($bdd, $cvID)
     }
 }
 
-function getAcademicsForCV($bdd)
+function getAcademicsForCV($bdd, $cvId)
 {
     $academics = $bdd->prepare("SELECT * FROM academics LEFT JOIN liaison_academic ON academics.Academic_id = liaison_academic.Academic_id LEFT JOIN cv ON cv.Cv_id = liaison_academic.Cv_id WHERE academics.User_id=? AND cv.Cv_id=?");
-    $academics->execute([getUserID(), getLastCvId($bdd)]);
+    $academics->execute([getUserID(), $cvId]);
     return $academics;
 }
 

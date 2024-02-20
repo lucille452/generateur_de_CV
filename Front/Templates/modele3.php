@@ -37,7 +37,7 @@
     <div class="content">
         <h2>Parcours Académique</h2>
         <?php
-        $academics = getAcademicsForCV($bdd);
+        $academics = getAcademicsForCV($bdd, getLastCvId($bdd));
         showDivAcademicsCV($academics);
         ?>
 

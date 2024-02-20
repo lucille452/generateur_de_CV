@@ -1,8 +1,7 @@
 <?php
 
 include 'information.php';
-include 'C:\xampp\htdocs\generateur_de_CV\server\academics\services.php';
-include 'C:\xampp\htdocs\generateur_de_CV\server\experiences\services.php';
+include 'C:/xampp/htdocs/generateur_de_CV/server/CV/services.php';
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 
