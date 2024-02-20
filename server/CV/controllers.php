@@ -6,3 +6,11 @@ function showCvByUser($userId, $bdd)
     $cv->execute([$userId]);
     showCvMiddleware($cv);
 }
+
+function delCv($bdd, $userID)
+{
+    $cvUser = $bdd->prepare("SELECT * FROM cv WHERE User_id=?");
+    $cvUser->execute([$userID]);
+
+    deleteCVMiddleware($bdd, $cvUser);
+}

@@ -33,7 +33,7 @@ section {
     text-align: center;
 }
 
-div:hover {
+.div:hover {
     border-color: #ffffff;
     cursor: pointer;
 }

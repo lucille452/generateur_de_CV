@@ -10,7 +10,7 @@ function getLastCvId($bdd)
 
 function showCV($cv)
 {
-    echo "<div style='margin-left: 15vh;
+    echo "<form action='' method='post'><div style='margin-left: 15vh;
     margin-right: 15vh;
     margin-bottom: 7vh;
     background-color: #2a2a2a;
@@ -21,7 +21,23 @@ function showCV($cv)
     //add academics/expe by id cv
 
     echo "<p style='color: white'><strong>Hobbies : </strong>" . $cv['Hobbies'] . "</p>";
-    echo "<p style='color: white'><strong>Modele de CV : </strong><img src='../../Front/image/model". $cv['Model'] .".png' style='width: 15%; height: auto'></p></div>";
+    echo "<p style='color: white'><strong>Modele de CV : </strong><img src='../../Front/image/model". $cv['Model'] .".png' style='width: 15%; height: auto'></p>";
+    echo "<style>
+        .delete {
+            width: 4vh;
+            height: 4vh;
+            background-image: url(../../Front/image/corbeille.png);
+            background-size: cover;
+            background-color: #2a2a2a;
+            border: none;
+        }
+
+        .delete:hover {
+            cursor: pointer;
+        }
+    </style>
+    <input type='submit' class='delete' value='' name='deleteCv{$cv['Cv_id']}'></div></form>";
+
 }
 
 function deleteCV($bdd, $id)

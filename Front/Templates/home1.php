@@ -66,6 +66,7 @@
     <?php
     include '../../server/CV/controllers.php';
     showCvByUser(getUserID(), $bdd);
+    delCv($bdd, getUserID());
     ?>
 </main>
 
