@@ -21,8 +21,8 @@
                 </header>
                 <div class="container">
                     <?php
+                    include '../../server/pages/information.php';
                     $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
-                    session_start();
                     $user = $bdd->prepare('SELECT * FROM users WHERE Username=?');
                     $user->execute([$_SESSION['username']]);
 
@@ -63,6 +63,10 @@
     <!--tous les cv-->
     <h1>Mes CV</h1>
     <!--list/boucle pour afficher tous les cv-->
+    <?php
+    include '../../server/CV/controllers.php';
+    showCvByUser(getUserID(), $bdd);
+    ?>
 </main>
 
 </body>
