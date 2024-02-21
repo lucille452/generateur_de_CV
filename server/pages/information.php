@@ -1,6 +1,6 @@
 <?php
-include 'C:/xampp/htdocs/generateur_de_CV/server/experiences/middlewares.php';
-include 'C:/xampp/htdocs/generateur_de_CV/server/academics/middlewares.php';
+include 'C:/xampp/htdocs/generateur_de_CV/server/experiences/controllers.php';
+include 'C:/xampp/htdocs/generateur_de_CV/server/academics/controllers.php';
 
 $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
 

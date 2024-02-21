@@ -10,3 +10,12 @@ function delExpe($bdd, $experiencesUser)
     }
 }
 
+function addLiaisonExpeMiddleware($bdd, $cvID, $experiences)
+{
+    while ($row = $experiences->fetch(PDO::FETCH_ASSOC)) {
+        if (!empty($_POST["experience{$row['Experience_id']}"])) {
+            $id = intval($row['Experience_id']);
+            addLiaisonExpe($bdd, $id, $cvID);
+        }
+    }
+}

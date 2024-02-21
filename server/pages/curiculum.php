@@ -32,8 +32,8 @@ if (isset($_POST['submit'])) {
         $cv->execute([$job, $hobbies, getUserID(), $model]);
 
         $cvID = getLastCvId($bdd);
-        addLiaisonAca($bdd, $cvID);
-        addLiaisonExpe($bdd, $cvID);
+        addLiaisonAcademic($bdd, $cvID);
+        addLiaisonExperiences($bdd, $cvID);
         header('Location: ../Templates/modele' . $model . '.php');
 
 
