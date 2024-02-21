@@ -39,13 +39,3 @@ if (isset($_POST['pro'])) {
         $experiences->execute([$company, $dateStart, $dateEnd, $job, $descriptions, getUserID()]);
     }
 }
-
-$experiencesUser = $bdd->prepare("SELECT * FROM experiences WHERE User_id=?");
-$experiencesUser->execute([getUserID()]);
-
-delExpe($bdd, $experiencesUser);
-
-$academicsUser = $bdd->prepare("SELECT * FROM academics WHERE User_id=?");
-$academicsUser->execute([getUserID()]);
-
-delAca($bdd, $academicsUser);

@@ -8,3 +8,26 @@ function addLiaisonAcademic($bdd, $cvID)
 
     addLiaisonAcademicMiddleware($bdd, $academics, $cvID);
 }
+
+function deleteAca($bdd, $userID)
+{
+    $academicsUser = $bdd->prepare("SELECT * FROM academics WHERE User_id=?");
+    $academicsUser->execute([$userID]);
+
+    deleteAcaMiddleware($bdd, $academicsUser);
+    header('../../Front/Templates/info.php');
+}
+
+function showUpdateAca($bdd, $userID)
+{
+    $academicsUser = $bdd->prepare("SELECT * FROM academics WHERE User_id=?");
+    $academicsUser->execute([$userID]);
+
+    showUpdateAcaMiddleware($academicsUser);
+}
+
+function updateAca($bdd)
+{
+    updateAcaMiddleware($bdd);
+    header('../../Front/Templates/info.php');
+}

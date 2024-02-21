@@ -26,6 +26,9 @@ include "../../server/pages/information.php";
         echo "<p>" . $row['School']. "</p>";
         echo "<form action='' method='post'><input type='submit' value='' name='updateAca{$row['Academic_id']}' class='update'>";
         echo "<input type='submit' value='' name='deleteAca{$row['Academic_id']}' class='delete'></div></form>";
+        showUpdateAca($bdd, getUserID());
+        updateAca($bdd);
+        deleteAca($bdd, getUserID());
     }
 
     ?>
@@ -89,8 +92,10 @@ include "../../server/pages/information.php";
         echo "<p>" . $row['Descriptions']. "</p>";
         echo "<form action='' method='post'><input type='submit' value='' name='updateExpe{$row['Experience_id']}' class='update'>";
         echo "<input type='submit' value='' name='deleteExpe{$row['Experience_id']}' class='delete'></div></form>";
+        showUpdateExpe($bdd, getUserID());
+        updateExpe($bdd);
+        deleteExpe($bdd, getUserID());
     }
-
     ?>
     <h2>Ajouter une expérience :</h2>
     <form action="" method="post">

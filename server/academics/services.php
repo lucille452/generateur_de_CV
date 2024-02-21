@@ -22,10 +22,29 @@ function showDivAcademicsCV($academics)
     }
 }
 
-function deleteAcademics($bdd, $id)
+function deleteAcademic($bdd, $id)
 {
     $deleteAca = $bdd->prepare("DELETE FROM academics WHERE Academic_id=?");
     $deleteAca->execute([$id]);
     $deleteLiaison = $bdd->prepare("DELETE FROM liaison_academic WHERE Academic_id=?");
     $deleteLiaison->execute([$id]);
 }
+
+function updateAcademic($bdd, $id, $diploma, $dateStart, $dateEnd, $school)
+{
+    $updateAca = $bdd->prepare("UPDATE academics SET Diploma=?, Date_start=?, Date_end=?, School=? WHERE Academic_id=?");
+    $updateAca->execute([$diploma, $dateStart, $dateEnd, $school, $id]);
+}
+
+function showUpdateAcademic($academic)
+{
+    echo "<form style='background-color: #1e1e1e; padding: 10px; border-radius: 10px' action='' method='post'>";
+    echo "<input type='text' name='diploma2' value='{$academic['Diploma']}'>";
+    echo "<input style='margin-left: 0' type='date' name='dateStart2' value='{$academic['Date_start']}'>";
+    echo "<input style='margin-left: 0' type='date' name='dateEnd2' value='{$academic['Date_end']}'>";
+    echo "<input type='text' name='school2' value='{$academic['School']}'>";
+    echo "<input type='hidden' name='id2' value='{$academic['Academic_id']}'>";
+    echo "<input style='width: 10vh; background-color: #b99d21; color: white; border-radius: 5px' type='submit' name='updateAcademic' value='Modifier'>";
+    echo "</form>";
+}
+
