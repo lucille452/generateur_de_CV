@@ -8,7 +8,7 @@ function getLastCvId($bdd)
     return $cvID['Cv_id'];
 }
 
-function showCV($cv)
+function showCV($cv, $bdd)
 {
     echo "<form action='' method='post'><div style='margin-left: 15vh;
     margin-right: 15vh;
@@ -17,11 +17,21 @@ function showCV($cv)
     padding: 20px;
     border-radius: 10px;
     border: 2px solid #2ecc71;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);'><p style='color: white'><strong>Job : </strong>" . $cv['Job'] . "</p>";
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);'><p style='color: #9c9c9c'><strong style='color: white'>Job : </strong>" . ucfirst($cv['Job']) . "</p>";
     //add academics/expe by id cv
 
-    echo "<p style='color: white'><strong>Hobbies : </strong>" . $cv['Hobbies'] . "</p>";
-    echo "<p style='color: white'><strong>Modele de CV : </strong><img src='../../Front/image/model". $cv['Model'] .".png' style='width: 15%; height: auto'></p>";
+    $academics = getAcademicsForCV($bdd, $cv['Cv_id']);
+    echo "<section><strong style='color: white'>Parcours Académique : </strong>";
+    showDivAcademicsCV($academics);
+    echo "</section>";
+
+    echo "<section><strong style='color: white'>Expériences Professionnelles : </strong>";
+    $experiences = getExperiencesForCV($bdd, $cv['Cv_id']);
+    showDivExperiencesCV($experiences);
+    echo "</section>";
+
+    echo "<p style='color: #9c9c9c'><strong style='color: white'>Hobbies : </strong>" . ucfirst($cv['Hobbies']) . "</p>";
+    echo "<p style='color: #9c9c9c'><strong style='color: white'>Modele de CV : </strong><img src='../../Front/image/model". $cv['Model'] .".png' style='width: 15%; height: auto'></p>";
     echo "<style>
         .delete {
             width: 4vh;

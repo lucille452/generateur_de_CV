@@ -13,7 +13,11 @@ main {
     padding-top: 10vh;
 }
 
-section {
+section{
+    color: #9c9c9c;
+}
+
+.section {
     margin-left: 15vh;
     margin-right: 15vh;
     display: flex;

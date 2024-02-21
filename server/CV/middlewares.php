@@ -1,9 +1,9 @@
 <?php
 include 'services.php';
-function showCvMiddleware($cvs)
+function showCvMiddleware($cvs, $bdd)
 {
     foreach ($cvs as $cv) {
-        showCV($cv);
+        showCV($cv, $bdd);
     }
 }
 

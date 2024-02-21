@@ -46,7 +46,7 @@
 </header>
 
 <main>
-    <section>
+    <section class="section">
         <div class="div">
             <a class="choice" href="info.php">
                 <h2>Mes Informations</h2>
