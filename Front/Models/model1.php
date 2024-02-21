@@ -92,7 +92,7 @@
 <section>
     <h2>Expérience Professionnelle</h2>
     <?php
-    $experiences = getExperiencesForCV($bdd);
+    $experiences = getExperiencesForCV($bdd, getLastCvId($bdd));
     showDivExperiencesCV($experiences);
     ?>
 </section>

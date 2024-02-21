@@ -13,10 +13,10 @@ function addLiaisonExpe($bdd, $cvID)
     }
 }
 
-function getExperiencesForCV($bdd)
+function getExperiencesForCV($bdd, $id)
 {
     $experiences = $bdd->prepare("SELECT * FROM experiences LEFT JOIN liaison_experience ON experiences.Experience_id = liaison_experience.Experience_id LEFT JOIN cv ON cv.Cv_id = liaison_experience.Cv_id WHERE experiences.User_id=? AND cv.Cv_id=?");
-    $experiences->execute([getUserID(), getLastCvId($bdd)]);
+    $experiences->execute([getUserID(), $id]);
     return $experiences;
 }
 
