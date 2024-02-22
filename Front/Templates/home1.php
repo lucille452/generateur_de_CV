@@ -22,6 +22,7 @@
                 <div class="container">
                     <?php
                     include '../../server/pages/information.php';
+                    include '../../server/user/controllers.php';
                     $bdd = new PDO('mysql:host=localhost;dbname=database', 'root', '');
                     $user = $bdd->prepare('SELECT * FROM users WHERE Username=?');
                     $user->execute([$_SESSION['username']]);
@@ -31,7 +32,25 @@
                         echo "<p>" . $row['First_name']. "</p>";
                         echo "<p>" . $row['Email']. "</p>";
                         echo "<p>" . $row['Phone_tel']. "</p>";
-                        echo "<p>" . $row['Username']. "</p></div>";
+                        echo "<p>" . $row['Username']. "</p>";
+                        echo "<form action='' method='post'>";
+                        echo "<style>
+                                .update {
+                                    width: 4vh;
+                                    height: 4vh;
+                                    background-image: url(../../Front/image/crayon.png);
+                                    background-size: cover;
+                                    background-color: #2a2a2a;
+                                    border: none;
+                                }
+
+                                .update:hover {
+                                    cursor: pointer;
+                                }
+                        </style><input type='submit' value='' name='updateUser' class='update'></div></form>";
+
+                        showUpdateUserController($bdd, getUserID());
+                        updateUserController($bdd);
                     }
 
                     ?>
