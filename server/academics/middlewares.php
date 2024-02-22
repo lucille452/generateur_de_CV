@@ -22,7 +22,7 @@ function addLiaisonAcademicMiddleware($bdd, $academics, $cvID)
 function showUpdateAcaMiddleware($academicUser)
 {
     while ($row = $academicUser->fetch(PDO::FETCH_ASSOC)) {
-        if (isset($_POST["updateExpe{$row['Academic_id']}"])) {
+        if (isset($_POST["updateAca{$row['Academic_id']}"])) {
             showUpdateAcademic($row);
         }
     }
