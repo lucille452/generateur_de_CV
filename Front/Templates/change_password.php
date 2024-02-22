@@ -51,7 +51,7 @@ include '../../server/pages/changePassword.php';
 
             <button type="submit" name="submit">Enregistrer</button>
         </form></br>
-        <a href="sign_up.php">
+        <a href="home.php">
             <button class="register">Retour</button>
         </a>
     </div>
