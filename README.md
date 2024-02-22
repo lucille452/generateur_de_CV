@@ -35,7 +35,7 @@ Cloner le repository dans votre dossier racine, dans laragon, dans le dossier ww
  ```bash
  git clone https://github.com/lucille452/generateur_de_CV.git
  ```
-Ne pas oublier **d'importer la base de données** sur phpMyAdmin, laragon ou autre gestionnaire de base de données :
+Ne pas oublier **d'importer la base de données** sur phpMyAdmin, laragon ou tout autre gestionnaire de base de données :
 
     ./database.sql
 
@@ -56,4 +56,4 @@ Accédez à l'application dans le navigateur à l'adresse : http://localhost/Gen
 
 ## Démonstration
 [![Demo Vidéo](Front/image/demo.png)](Demo/demo_generation_cv.mp4)
-J'ai un problème d'include qui fait que je suis obligée d'utiliser parfois des chemins absolu, donc ca ne fonctionnera pas forcément. J'ai donc mis ci-dessus une démonstration de mon projet
+J'ai un problème d'inclusion qui fait que je suis obligée d'utiliser parfois des chemins absolus. J'ai donc mis ci-dessus une démonstration de mon projet.
