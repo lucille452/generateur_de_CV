@@ -20,3 +20,10 @@ function updateUserMiddleware($bdd)
         updateUser($bdd, $id, $lastName, $firstName, $email, $phoneTel, $username);
     }
 }
+
+function updatePasswordMiddleware($bdd, $username, $email, $password, $checkPassword)
+{
+    if (!empty($email) && !empty($username) && !empty($password) && !empty($checkPassword) && $password == $checkPassword) {
+        updatePassword($bdd, $username, $email, $password);
+    }
+}

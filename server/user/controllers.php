@@ -13,3 +13,9 @@ function updateUserController($bdd)
     updateUserMiddleware($bdd);
     header('../../Front/Templates/home1.php');
 }
+
+function updatePasswordController($bdd, $username, $email, $password, $checkPassword)
+{
+    updatePasswordMiddleware($bdd, $username, $email, $password, $checkPassword);
+    header('../../Front/Templates/home.php');
+}

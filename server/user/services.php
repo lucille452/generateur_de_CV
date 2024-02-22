@@ -23,3 +23,9 @@ function showUpdateUser($user)
     echo "<input style='width: 10vh; background-color: #b99d21; color: white; border-radius: 5px' type='submit' name='updateUser2' value='Modifier'>";
     echo "</form>";
 }
+
+function updatePassword($bdd, $username, $email, $password)
+{
+    $updatePassword = $bdd->prepare("UPDATE users SET Password=? WHERE Email=? AND Username=?");
+    $updatePassword->execute([$password, $email, $username]);
+}

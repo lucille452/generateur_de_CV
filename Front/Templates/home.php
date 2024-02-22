@@ -33,7 +33,7 @@ include '../../server/pages/connection.php';
         }
         ?><p></p>
 
-<!--        <a>Mot de passe oublié</a></p>-->
+        <a href="change_password.php">Mot de passe oublié</a></p>
 
         <button type="submit" name="submit">Connexion</button>
     </form></br>
